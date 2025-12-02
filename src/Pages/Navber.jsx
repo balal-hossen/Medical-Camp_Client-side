@@ -66,7 +66,7 @@ const Navber = () => {
 
 
 
-  const { user, role, loading, logOut } = useAuth();
+  const { user, role, logOut } = useAuth();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -96,13 +96,13 @@ const Navber = () => {
     }
   };
 
-  if (loading) {
+  /* if (loading) {
     return (
       <div className="navbar bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 shadow-sm fixed top-0 z-50 w-full flex justify-center items-center text-white h-16">
         Loading...
       </div>
     );
-  }
+  } */
 
   const navItems = (
     <div className="flex flex-col lg:flex-row gap-4 lg:gap-6">
@@ -128,8 +128,8 @@ const Navber = () => {
   to="/"
   className={({ isActive }) =>
     isActive
-      ? "text-yellow-300 font-semibold underline"
-      : "text-white hover:text-yellow-300 transition-colors duration-300"
+      ? "text-yellow-300 font-semibold  font-cinzel underline"
+      : "text-white hover:text-yellow-300 font-cinzel transition-colors duration-300"
   }
   onClick={() => {
     speakText('Home');   // TTS
@@ -144,8 +144,8 @@ const Navber = () => {
         to="/availecamp"
         className={({ isActive }) =>
           isActive
-            ? "text-yellow-300 font-semibold underline"
-            : "text-white hover:text-yellow-300 transition-colors duration-300"
+            ? "text-yellow-300 font-cinzel font-semibold underline"
+            : "text-white font-cinzel hover:text-yellow-300 transition-colors duration-300"
         }
         onClick={() =>{
              speakText('available camps');
@@ -161,8 +161,8 @@ const Navber = () => {
           to="/dashboard"
           className={({ isActive }) =>
             isActive
-              ? "text-yellow-300 font-semibold underline"
-              : "text-white hover:text-yellow-300 transition-colors duration-300"
+              ? "text-yellow-300 font-cinzel font-semibold underline"
+              : "text-white font-cinzel hover:text-yellow-300 transition-colors duration-300"
           }
           onClick={() =>{
              speakText('dashboard');
@@ -177,8 +177,8 @@ const Navber = () => {
           to="/participent"
           className={({ isActive }) =>
             isActive
-              ? "text-yellow-300 font-semibold"
-              : "text-white hover:text-yellow-300 transition-colors duration-300"
+              ? "text-yellow-300 font-cinzel font-semibold"
+              : "text-white font-cinzel hover:text-yellow-300 transition-colors duration-300"
           }
           onClick={() =>{
            speakText('participant dashboard');
@@ -203,7 +203,7 @@ const Navber = () => {
 
 
       {/* Navbar */}
-      <div className="navbar bg-gradient-to-r font-lora  from-indigo-600 via-purple-600 to-pink-600 shadow-sm -ml-2 fixed top-0 z-50 w-full">
+      <div className="navbar bg-gradient-to-r font-lora font-cinzel  from-indigo-600 via-purple-600 to-pink-600 shadow-sm -ml-2 fixed top-0 z-50 w-full">
         <div  className="navbar-start">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}

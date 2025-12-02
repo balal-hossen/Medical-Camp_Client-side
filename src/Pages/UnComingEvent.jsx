@@ -38,7 +38,7 @@ const UnComingEvent = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.2 }}
             viewport={{ once: true }}
-            className="bg-white p-6 rounded-2xl shadow-lg border hover:shadow-2xl transition duration-300"
+            className="p-6 rounded-2xl shadow-lg border hover:shadow-2xl transition duration-300"
           >
             <h3 className="text-xl font-poppins mt-8 text-blue-800 mb-2">
               {event.title}

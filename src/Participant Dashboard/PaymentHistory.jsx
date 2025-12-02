@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import useAuth from '../AuthProvider/UseAuth';
-import useAxiosSecure from '../AuthProvider/UseAxios';
-//import vidbg from '../assets/image/1103996_1080p_Disease_3840x2160.mp4';
-import { Helmet } from 'react-helmet-async';
-import '../../src/App.css'
+import React, { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import useAuth from "../AuthProvider/UseAuth";
+import useAxiosSecure from "../AuthProvider/UseAxios";
+import { Helmet } from "react-helmet-async";
+import Skeleton from "../components/ui/skeletor"; // ✅ Skeleton import
+import "../../src/App.css";
+
 const PaymentHistory = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
   const itemsPerPage = 5;
 
   const { data: payments = [], isLoading } = useQuery({
-    queryKey: ['paymentHistory', user?.email],
+    queryKey: ["paymentHistory", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/payments/${user.email}`);
       return res.data;
@@ -23,11 +24,7 @@ const PaymentHistory = () => {
     enabled: !!user?.email,
   });
 
-  if (isLoading) {
-    return   <div className="loader"></div>
-  }
-
-  const filteredPayments = payments.filter(payment =>
+  const filteredPayments = payments.filter((payment) =>
     payment.campName.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -36,32 +33,42 @@ const PaymentHistory = () => {
   const currentPayments = filteredPayments.slice(indexOfFirst, indexOfLast);
 
   const handlePageChange = (pageNumber) => {
-    if (pageNumber >= 1 && pageNumber <= Math.ceil(filteredPayments.length / itemsPerPage)) {
+    if (
+      pageNumber >= 1 &&
+      pageNumber <= Math.ceil(filteredPayments.length / itemsPerPage)
+    ) {
       setCurrentPage(pageNumber);
     }
   };
 
+  // ✅ Skeleton loading
+  if (isLoading) {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-6">
+        {Array.from({ length: itemsPerPage }).map((_, i) => (
+          <Skeleton key={i} />
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className="relative min-h-screen overflow-hidden z-500">
-      {/*  Background Video */}
-     {/*  <video
-        src={vidbg}
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="fixed top-0 left-0 w-full h-full object-cover z-0"
-      /> */}
       <Helmet>
-        <title>ParmentHistory| MedCampMS</title>
-        <meta name="description" content="Welcome to MedCampMS - Your trusted medical camp management system." />
-     </Helmet>
-      {/* 🔲 Content Wrapper */}
-      <div className="relative z-10 min-h-screen  bg-opacity-70 px-4 sm:px-6 lg:px-10 py-12 text-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6 text-center">💳 Payment History</h2>
+        <title>Payment History | MedCampMS</title>
+        <meta
+          name="description"
+          content="Welcome to MedCampMS - Your trusted medical camp management system."
+        />
+      </Helmet>
 
-          {/*  Search */}
+      <div className="relative z-10 min-h-screen bg-opacity-70 px-4 sm:px-6 lg:px-10 py-12 text-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold mb-6 text-center">
+            💳 Payment History
+          </h2>
+
+          {/* Search */}
           <div className="mb-6 flex justify-center">
             <input
               type="text"
@@ -75,7 +82,7 @@ const PaymentHistory = () => {
             />
           </div>
 
-          {/*  Table Section */}
+          {/* Table */}
           {currentPayments.length === 0 ? (
             <p className="text-center text-gray-300">No payment history found.</p>
           ) : (
@@ -91,11 +98,20 @@ const PaymentHistory = () => {
                 </thead>
                 <tbody>
                   {currentPayments.map((payment) => (
-                    <tr key={payment._id} className="hover:bg-gray-200 transition">
+                    <tr
+                      key={payment._id}
+                      className="hover:bg-gray-200 transition"
+                    >
                       <td className="px-3 py-2">{payment.campName}</td>
-                      <td className="px-3 py-2 text-green-600 font-semibold">${payment.amount}</td>
-                      <td className="px-3 py-2 break-all">{payment.transactionId}</td>
-                      <td className="px-3 py-2">{new Date(payment.date).toLocaleDateString()}</td>
+                      <td className="px-3 py-2 text-green-600 font-semibold">
+                        ${payment.amount}
+                      </td>
+                      <td className="px-3 py-2 break-all">
+                        {payment.transactionId}
+                      </td>
+                      <td className="px-3 py-2">
+                        {new Date(payment.date).toLocaleDateString()}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -103,12 +119,13 @@ const PaymentHistory = () => {
             </div>
           )}
 
-          {/*  Pagination */}
+          {/* Pagination */}
           {filteredPayments.length > itemsPerPage && (
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-white">
               <div>
                 Showing {indexOfFirst + 1}–
-                {Math.min(indexOfLast, filteredPayments.length)} of {filteredPayments.length}
+                {Math.min(indexOfLast, filteredPayments.length)} of{" "}
+                {filteredPayments.length}
               </div>
               <div className="flex flex-wrap gap-2">
                 <button
@@ -119,14 +136,16 @@ const PaymentHistory = () => {
                   ← Prev
                 </button>
 
-                {Array.from({ length: Math.ceil(filteredPayments.length / itemsPerPage) }).map((_, i) => (
+                {Array.from({
+                  length: Math.ceil(filteredPayments.length / itemsPerPage),
+                }).map((_, i) => (
                   <button
                     key={i + 1}
                     onClick={() => handlePageChange(i + 1)}
                     className={`px-3 py-1 rounded ${
                       currentPage === i + 1
-                        ? 'bg-green-500 text-white'
-                        : 'bg-gray-700 hover:bg-gray-600'
+                        ? "bg-green-500 text-white"
+                        : "bg-gray-700 hover:bg-gray-600"
                     }`}
                   >
                     {i + 1}
@@ -135,7 +154,10 @@ const PaymentHistory = () => {
 
                 <button
                   onClick={() => handlePageChange(currentPage + 1)}
-                  disabled={currentPage >= Math.ceil(filteredPayments.length / itemsPerPage)}
+                  disabled={
+                    currentPage >=
+                    Math.ceil(filteredPayments.length / itemsPerPage)
+                  }
                   className="px-3 py-1 rounded bg-gray-700 hover:bg-gray-600 disabled:opacity-40"
                 >
                   Next →

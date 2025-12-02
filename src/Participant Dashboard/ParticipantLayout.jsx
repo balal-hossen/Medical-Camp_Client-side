@@ -48,7 +48,8 @@ const ParticipantLayout = () => {
         </div>
 
         {/* Page Content */}
-        <div
+        <di
+        
           style={{
             backgroundImage: `url(${img2})`,
             backgroundSize: "cover",
@@ -58,7 +59,7 @@ const ParticipantLayout = () => {
           className="text-white px-6 relative z-0"
         >
           <Outlet />
-        </div>
+        </di>
       </div>
 
       {/* Sidebar */}

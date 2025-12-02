@@ -19,6 +19,7 @@ const DashBoardLayout = () => {
                   <title>Organizer Dashboard| MedCampMS</title>
                   <meta name="description" content="Welcome to MedCampMS - Your trusted medical camp management system." />
                 </Helmet>
+                
   <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
   <div className="drawer-content flex flex-col ">
     {/* Page content here */}
@@ -41,10 +42,12 @@ const DashBoardLayout = () => {
         </label>
       </div>
       <div className="mx-2 flex-1 px-2">DeshBoard</div>
-      
+     
     </div>
 
 <div
+
+
    style={{ 
         backgroundImage: `url(${img2})`,
         backgroundSize: 'cover',
@@ -56,11 +59,17 @@ const DashBoardLayout = () => {
       transition={{ duration: 0.6 }}
       
 >
-  <Outlet></Outlet>
+  
+  <Outlet>
+
+  </Outlet>
+  
 </div>
+
 {/* Page content here */}
 
   </div>
+  
   <div className="drawer-side"
   
     >
@@ -80,7 +89,9 @@ const DashBoardLayout = () => {
     <SidBer />
 
     </ul>
+  
   </div>
+  
 </div>
     );
 };

@@ -72,7 +72,7 @@ const Footer = () => {
           <button className='cursor-pointer hover:bg-primary hover:btn-primary p-2'>About Me</button>
           </Link>
           <ul className="space-y-2 text-sm">
-            <li className="flex items-center gap-2"><FaEnvelope /> belalkhanloverboy2004@gmail.com</li>
+            <li className="flex items-center gap-2"><FaEnvelope /> balalhossan1711@gmail.com</li>
             <li className="flex items-center gap-2"><FaPhone /> +880-1309707330</li>
             <li>123 Health Street, Dhaka, Bangladesh</li>
           </ul>
@@ -82,9 +82,9 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold text-lg mb-3">Follow Us</h3>
           <div className="flex gap-4 text-xl">
-          <a href="https://www.facebook.com/belal.khan.203198" target="_blank" rel="noopener noreferrer"><FaFacebook/></a>
-          <a href="https://www.linkedin.com/in/balal-hossen" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
-           <a href="https://github.com/BELALKHANBK" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
+          <a href="https://www.facebook.com/belalkhan2004" target="_blank" rel="noopener noreferrer"><FaFacebook/></a>
+          <a href="https://www.linkedin.com/in/md-balal-hossenb11" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+           <a href="https://github.com/balal-hossen" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
           </div>
         </div>
       </div>

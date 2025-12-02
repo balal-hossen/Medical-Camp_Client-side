@@ -55,6 +55,7 @@ const SidBerPar = () => {
         </motion.li>
       ))}
     </ul>
+    
   );
 };
 

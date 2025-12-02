@@ -81,10 +81,10 @@ const SuccessStoriesSlider = () => {
         style={{ padding: "60px 20px" }}
       >
         <div style={{ maxWidth: "900px", margin: "auto", textAlign: "center" }}>
-          <h2 style={{ fontFamily: 'Poppins, sans-serif', fontSize: "2.5rem", marginBottom: "1rem", color: "#004d40" }}>
+          <h2 className="font-cinzel" style={{ fontSize: "2rem", marginBottom: "1rem", color: "#004d40" }}>
             <FaHeartbeat className="inline text-red-500 font-cinzel mr-2 font-cinzel" /> Success Stories from Our Medical Camps
           </h2>
-          <p style={{ fontSize: "1.1rem", marginBottom: "40px", color: "#555" }}>
+          <p className="font-cinzel font-bold" style={{ fontSize: "1.1rem", marginBottom: "40px", color: "#555" }}>
             Celebrating impactful moments and achievements from our past camps.
           </p>
         </div>
@@ -145,7 +145,7 @@ const SuccessStoriesSlider = () => {
                 <h3 style={{ fontSize: "1.3rem", marginBottom: "10px", color: "#004d40" }}>
                   {title}
                 </h3>
-                <p style={{ fontSize: "1rem", color: "#333" }}>
+                <p className="font-cinzel" style={{ fontSize: "1rem", color: "#333" }}>
                   {description}
                 </p>
               </motion.div>

@@ -61,9 +61,6 @@ const Home = () => {
         <CountDown />
       </Fade>
 
-      <Slide direction="right" triggerOnce>
-        <App />
-      </Slide>
     </div>
   );
 };
